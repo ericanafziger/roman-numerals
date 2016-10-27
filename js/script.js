@@ -1,43 +1,77 @@
 var romanNumeral = function(input) {
+	var ones = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+	var tens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
+	var hundreds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+	var thousands = ["", "M", "MM", "MMM"];
+	debugger;
+	var array = [];
 
-	// var numbers = [1, 5, 10, 50, 100, 500, 1000];
-	// var numerals = ["I", "V", "X", "L", "C", "D", "M"];
-	var ones = ["","1","2", "3", "4", "5", "6", "7", "8", "9"];
-	var onesNumerals = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-	var tens = ["",10,20, 30, 40, 50, 60, 70, 80, 90];
-	var tensNumerals = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
-	var hundreds = ["",10,20, 30, 40, 50, 60, 70, 80, 90];
-	var hundredsNumerals = ["", "I", "II", "III", "IV", "VI", "VII", "VIII", "IX"];
-
-	var array = input.split("");
-	var symbol;
-
-alert(array);
-	if (array.length === 1) {
-		for (var i = 1; i < ones.length; i++) {
-			if (ones[i] === array[0]) {
-				// debugge2r;
-				symbol = onesNumerals[i]
-			}
+	if (input > 3999 || input < 1) {
+		alert("Please choose a number between 1 and 3,999");
+	} else {
+		debugger;
+		array = input.split("");
+		var result = array.map(function(x){
+			return parseInt(x);
+		})
+		if (result.length === 1) {
+			result[0] = ones[result[0]];
+		} else if (result.length === 2) {
+			result[0] = tens[result[0]];
+			result[1] = ones[result[1]];
+		} else if (result.length === 3) {
+			result[0] = hundreds[result[0]];
+			result[1] = tens[result[1]];
+			result[2] = ones[result[2]];
+		} else if (result.length === 4) {
+			result[0] = thousands[result[0]];
+			result[1] = hundreds[result[1]];
+			result[2] = tens[result[2]];
+			result[3] = ones[result[3]];
+		}
+		return result.join("");
 	}
-	return symbol;
 
-}
-		//end of for length 1 loop
-	// } else if (otherNums.indexOf(input) > -1) {
-	// 	for (var i = 0; i < otherNums.length; i++) {
-	// 		if (otherNums[i] === input) {
-	// 			var symbol = otherNumers[i]
-	// 			return symbol;
-	// 		}
-	// 	}//end of for 2 loop
-	// } else {
-	// 	return ("enter a valid number");
-	// }
+
+
+
+
 
 
 
 } //end of function
+
+// if (array.length === 1) {
+// 	for (var i = 1; i < ones.length; i++) {
+// 		if (ones[i] === array[0]) {
+// 			symbol = onesNumerals[i]
+// 		}
+// }
+// return symbol;
+// } else if (array.length === 2) {
+// for (var i = 1; i < ones.length; i++) {
+// 	if (tens[i] === array[0]) {
+// 		symbol = tensNumerals[i] + onesNumerals[i]
+// 	} else if (ones[i] === array[1]) {
+// 		symbol = onesNumerals[i]
+// 	}
+// }
+// return symbol;
+// }
+
+//end of for length 1 loop
+// } else if (otherNums.indexOf(input) > -1) {
+// 	for (var i = 0; i < otherNums.length; i++) {
+// 		if (otherNums[i] === input) {
+// 			var symbol = otherNumers[i]
+// 			return symbol;
+// 		}
+// 	}//end of for 2 loop
+// } else {
+// 	return ("enter a valid number");
+// }
+
+
 
 // var array = [];
 // var romanNumeral = function(number) {
